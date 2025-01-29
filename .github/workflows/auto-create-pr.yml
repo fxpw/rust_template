@@ -1,0 +1,21 @@
+name: Auto-create Pull Request
+
+on:
+  create:
+
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          branch: ${{ github.ref }}
+          base: main
+          title: 'Auto PR: ${{ github.ref }}'
+          body: 'Automatically created pull request for ${{ github.ref }}'
+          assignees: ${{ github.actor }}
