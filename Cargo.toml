@@ -3,4 +3,8 @@ name = "rust_template"
 version = "0.1.0"
 edition = "2021"
 
+[[bin]]
+name = "rust_template"
+path = "src/main.rs"
+
 [dependencies]

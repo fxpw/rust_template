@@ -9,7 +9,6 @@ REMOVE_IMAGES = docker rmi $$(docker images -f "dangling=true" -q)
 
 # Команды
 .PHONY: all build run down clean remove-images
-
 # Основная команда: сборка и запуск
 all: build run
 # Сборка приложения
@@ -28,6 +27,8 @@ down:
 clean:
 	$(REMOVE_IMAGES)
 
+
+up:build run
 # Полное удаление контейнеров и образов
 remove-images:
 	$(REMOVE) && $(REMOVE_IMAGES)
