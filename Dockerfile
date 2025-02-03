@@ -1,20 +1,8 @@
-# Указываем базовый образ
 FROM rust:latest
 
-# Устанавливаем рабочую директорию
 WORKDIR /usr/src/rust_template
 
-# Копируем файлы Cargo.toml и Cargo.lock
-COPY Cargo.toml Cargo.lock ./
+COPY run_rust.sh /usr/local/bin/run_rust.sh
+RUN chmod +x /usr/local/bin/run_rust.sh
 
-# Создаем зависимые файлы
-RUN cargo build --release
-RUN rm src/*.rs
-
-# Копируем исходный код
-COPY . .
-
-# Собираем проект
-RUN cargo build --release
-
-# Указываем команду для запуска приложения (это делается в docker-compose.yml)
+ENTRYPOINT ["run_rust.sh"]

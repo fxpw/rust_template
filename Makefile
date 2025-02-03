@@ -27,6 +27,8 @@ down:
 clean:
 	$(REMOVE_IMAGES)
 
+
+up:build run
 # Полное удаление контейнеров и образов
 remove-images:
 	$(REMOVE) && $(REMOVE_IMAGES)
